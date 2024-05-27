@@ -2,3 +2,5 @@
 
 
 ## Relearning...
+
+uisjmnx nczmdsc,bm kn
