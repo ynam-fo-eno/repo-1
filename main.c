@@ -16,18 +16,63 @@ void addToList(int* numberList,int position,int number,int size)
     {
         numberList[i]=numberList[i-1];
     }
-    numberList[position]=number;
+    numberList[position-1]=number;
     printList(numberList,size);
 
 }
 
-void deleteFromList(int* numberList,int position,int number,int size)
+void deleteFromList(int* numberList,int position,int size)
 {
     for(int i=(position-1);i<=(size-1);i++)
     {
         numberList[i]=numberList[i+1];
     }
+    printf("New list post deletion:\n");
+    printList(numberList,size);
 
+}
+
+int maxNumber(int *numberList,int size)
+{
+    int mkubwa=numberList[size-1];
+    for(int i=0;i<size;i++)
+    {
+        if(numberList[i]>mkubwa)
+        {
+            return numberList[i];
+        }
+        else
+        {
+            return mkubwa;
+        }
+    }
+}
+
+int minNumber(int *numberList,int size)
+{
+    int mdogo=numberList[0];
+    for(int i=0;i<size;i++)
+    {
+        if(numberList[i]<mdogo)
+        {
+            return numberList[i];
+        }
+        else
+        {
+            return mdogo;
+        }
+    }
+}
+
+void sumAndAverage(int *numberList,int size)
+{
+    double sum=0;
+    for(int i=0;i<size;i++)
+    {
+        sum+=numberList[i];
+    }
+    double average= ((double)sum/size);
+    printf("Sum of items: %.2lf\nAverage:%.2lf",sum,average);
 }
 
 int main()
@@ -41,10 +86,16 @@ int main()
     scanf("%d",&position);
     printf("Now enter what number you'd like to add.\n");
     scanf("%d",&newNumber);
-    printf("New list:\nType number of item you wanna delete: \t");
-    scanf("%d",&position);
     addToList(numberList,position,newNumber,arraySize);
     printf("Now for deletion...");
+    printf("New list:\nType number of item you wanna delete: \t");
+    scanf("%d",&position);
+    deleteFromList(numberList,position,arraySize);
+    printf("Biggest number: %d\nSmallest number: %d\n",maxNumber(numberList,arraySize),minNumber(numberList,arraySize));
+    sumAndAverage(numberList,arraySize);
+
+
+
 }
 
  //Recalling how swapping is done efficiently(1st method) and creatively(2nd method)
