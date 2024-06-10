@@ -17,15 +17,16 @@ void addToList(int* numberList,int position,int number,int size)
         numberList[i]=numberList[i-1];
     }
     numberList[position]=number;
-    for(int i=0;i<size;i++)
-    {
-        printf("Item#%d : %d\n",(i+1),numberList[i]);
-    }
+    printList(numberList,size);
 
 }
 
-void deleteFromList()
+void deleteFromList(int* numberList,int position,int number,int size)
 {
+    for(int i=(position-1);i<=(size-1);i++)
+    {
+        numberList[i]=numberList[i+1];
+    }
 
 }
 
@@ -33,17 +34,20 @@ int main()
 {
     int numberList[5]={1,2,3,4,5};
     int arraySize= (sizeof(numberList)/4);
-    printf("%d\n",arraySize);
+    //printf("%d\n",arraySize);
     int position,newNumber;
     printList(numberList,arraySize);
     printf("Enter where in this list you wanna add an item. \n");
     scanf("%d",&position);
     printf("Now enter what number you'd like to add.\n");
     scanf("%d",&newNumber);
+    printf("New list:\nType number of item you wanna delete: \t");
+    scanf("%d",&position);
     addToList(numberList,position,newNumber,arraySize);
+    printf("Now for deletion...");
+}
 
-
-    //Recalling how swapping is done efficiently(1st method) and creatively(2nd method)
+ //Recalling how swapping is done efficiently(1st method) and creatively(2nd method)
     /*int a=50,b=70,temp;
     //Standard swapping using a 3rd varibale
     printf("Normal:%d, %d\n",a,b);
@@ -65,9 +69,3 @@ int main()
     //a== 120-70 ->50
     printf("Swapped once more: %d, %d\n",a,b);
     */
-
-
-
-
-
-}
